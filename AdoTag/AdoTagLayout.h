@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    AdoTagAlignmentLeft,
+    AdoTagAlignmentRight,
+} AdoTagAlignment;
+
 @interface AdoTagLayout : UICollectionViewFlowLayout
+
+@property (nonatomic,assign)AdoTagAlignment tagAlignment;   //default is left
 
 @end

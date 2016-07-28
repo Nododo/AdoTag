@@ -27,11 +27,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AdoTagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"nododo" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 255.0 green:arc4random_uniform(255) / 255.0 blue:arc4random_uniform(255) / 255.0 alpha:1];
+    cell.tagLabel.text = [NSString stringWithFormat:@"tag-%zd",indexPath.row];
     cell.deletePath = indexPath;
     cell.deleteBlock = ^(NSIndexPath *deletePath) {
         [self.sizes removeObjectAtIndex:deletePath.item];
         [self.mainCollectionView reloadData];
-    
     };
     return cell;
 }
@@ -39,7 +39,7 @@
 - (NSMutableArray *)sizes {
     if (!_sizes) {
         self.sizes = [NSMutableArray array];
-        for (int i = 0; i < 20; i ++) {
+        for (int i = 0; i < 100; i ++) {
             NSValue *sizeValue = [NSValue valueWithCGSize:CGSizeMake(arc4random_uniform(100) + 90, 60)];
             [_sizes addObject:sizeValue];
         }
